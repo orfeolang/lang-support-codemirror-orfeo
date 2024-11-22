@@ -1,0 +1,13 @@
+@top Program { line* }
+
+line { hws* LineComment ( newline | eof ) }
+
+@tokens {
+    LineComment { '# ' ![\n]* }
+
+    integer     { '0' | $[1-9] @digit* }
+    fraction    { '.' @digit+ }
+    hws         { $[ \t] }
+    newline     { '\n' }
+    eof         { @eof }
+}
